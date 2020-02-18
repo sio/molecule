@@ -19,6 +19,7 @@
 #  DEALINGS IN THE SOFTWARE.
 
 import os
+import shlex
 
 import sh
 
@@ -93,7 +94,7 @@ class Shell(base.Base):
 
         :return: None
         """
-        command_list = self.command.split(' ')
+        command_list = shlex.split(self.command)
         command, args = command_list[0], command_list[1:]
 
         self._sh_command = getattr(sh, command)
